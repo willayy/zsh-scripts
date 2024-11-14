@@ -1,2 +1,2 @@
 # zsh-scripts
-A collection of Z-Shell scripts.
+Two small toy shell scripts for adding and removing direction from the PATH variable in zsh.
