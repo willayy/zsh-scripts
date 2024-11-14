@@ -1,12 +1,5 @@
 #!/bin/zsh
 
-# MARK: What is this script for?
-# This script adds a directory to the PATH variable via adding it to the .zshrc file.
-
-# MARK: How to use this script?
-# source atpath.sh <directory> && chmod +x atpath.sh
-# Also add this script to the .zshrc file to make it available in every new shell session.
-
 # Ensure that directory is provided
 if [ -z "$1" ]; then
     echo "Usage: source atpath.sh <directory>"
