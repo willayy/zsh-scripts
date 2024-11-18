@@ -23,7 +23,7 @@ local dir="$1"
 # Check if the directory is already in PATH
 if [[ ":$PATH:" != *":$dir:"* ]]; then
     echo "\nexport PATH=\"$dir:\$PATH\"" >> ~/.zshrc
-    export PATH="$dir:$PATH"
+    export PATH=$dir:$PATH
     echo "Directory '$dir' added to PATH and the .zshrc file"
     return 0
 else

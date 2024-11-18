@@ -20,7 +20,6 @@ sed -i '' '/\nexport PATH="\'$dir':$PATH"/d' ~/.zshrc
 # Remove the directory from PATH in the current shell
 export PATH=$(echo $PATH | sed -e "s#:$dir:##g")
 
-
 echo "Directory '$dir' is removed from PATH and .zshrc."
 return 0
 
