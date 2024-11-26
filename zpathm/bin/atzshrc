@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+local dir="$1"
+local foundDir=$(grep $dir ~/.zshrc)
+local verbose="$2"
+
+# Ensure that directory is provided
+if [ -z "$dir" ]; then
+
+    echo "Usage: atzshrc <directory> [--verbose]"
+
+    return 1
+
+fi
+
+# Check if the directory is already in .zshrc file
+if [[ "$foundDir" != 'export PATH="'${dir}':$PATH"' ]]; then
+
+    # Add the directory to PATH via .zshrc file
+    echo "\nexport PATH=\"$dir:\$PATH\"" >> ~/.zshrc
+
+    # Inform the user
+    if [ ! -z "$verbose" ]; then 
+        echo "Directory '$dir' added to the .zshrc file"
+    fi
+    
+    # Task completed
+    return 0
+
+else
+
+    # Inform the user
+    if [ ! -z "$verbose" ]; then
+        echo "Directory '$dir' already exist in .zshrc file" 
+    fi
+
+    # Task completed
+    return 0
+
+fi

@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+local dir=$1
+local foundDir=$(grep $dir ~/.zshrc)
+local verbose=$2
+
+# Check if a directory was provided as an argument
+if [ -z "$dir" ]; then
+
+    echo "Usage: rfzshrc <directory> [--verbose]"
+
+    return 1
+
+fi
+
+# Check if directory exists in .zshrc file
+if [[ "$foundDir" != 'export PATH="'${dir}':$PATH"' ]]; then
+
+    if [ ! -z "$verbose" ]; then
+        echo "Directory '$dir' doesn't exist in .zshrc file."
+    fi
+
+    return 0
+
+fi
+
+# Remove the directory from .zshrc file
+sed -i '' 's|^.*export PATH="'$dir':$PATH".*$||' ~/.zshrc
+
+# Inform the user
+if [ ! -z "$verbose" ]; then
+    echo "Directory '$dir' is removed from .zshrc."
+fi
+
+# Task completed
+return 0
